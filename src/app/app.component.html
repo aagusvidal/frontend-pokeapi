@@ -1,0 +1,21 @@
+<h1>Lista de Pokemones</h1>
+<button (click)="getPokemons()">Obtener Pokemones</button>
+<ul> <li *ngFor="let pokemon of pokemonList">
+    <h2>{{pokemon.name}}</h2>
+    <img src="{{pokemon.image}}" />
+    <p>Tipos: {{pokemon.types.join(", ")}}</p>
+    <p>Habilidades: {{pokemon.abilities.join(", ")}}</p>
+    <p>Peso: {{pokemon.weight}} kg</p>
+    <button (click)="openDetailsModal(pokemon.idPokemon, pokemon.name)">Ver más información</button>
+
+    <div *ngIf="informacionAdicional && informacionAdicional.name === pokemon.name">
+      <h3>Información adicional de {{pokemon.name}}</h3>
+      <p>Descripción: {{informacionAdicional.description}}</p>
+      <p>Altura: {{informacionAdicional.height}}</p>
+      <p>Movimientos</p>
+      <ul>
+        <li *ngFor="let move of informacionAdicional.moves">{{move}}</li>
+      </ul>
+    </div>
+  </li>
+</ul>
